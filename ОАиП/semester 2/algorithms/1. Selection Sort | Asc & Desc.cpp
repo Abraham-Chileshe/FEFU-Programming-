@@ -18,7 +18,7 @@ int main(){
     }
 
 //Selection Sort | Assending Order
-std::cout<<"Assending Order: ";
+    std::cout<<"Assending Order: ";
     std::open;
     for(int i = 0; i<N; i++) {
         minNum = i;
@@ -37,9 +37,10 @@ std::cout<<"Assending Order: ";
     }
     std::close;
     std::cout<<"\n";
-   //-------------------------------------
+    //-------------------------------------
 
-
+    int numComparisons = 0;
+    int numExchanges = 0;
     //Selection Sort | Assending Order
     std::cout<<"Discending Order: ";
     std::open;
@@ -50,15 +51,20 @@ std::cout<<"Assending Order: ";
             if (arr[j] > arr[maxNum]) {
                 maxNum = j;
             }
+            numComparisons++;
         }
 
         int temp = arr[maxNum];
         arr[maxNum] = arr[i];
         arr[i] = temp;
+        numExchanges++;
 
         std::cout << arr[i] << ", ";
     }
     std::close;
+
+    std::cout<<"\n\nComparisons: "<<numComparisons<<std::endl;
+    std::cout<<"Exchange: "<<numExchanges;
     //Selection Sort
 
 }
