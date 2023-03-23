@@ -1,0 +1,66 @@
+Laboratory work No. 1
+The first work consists in the implementation of basic abstract classes
+for determining the coordinate system in three-dimensional space and abstract objects inside this system, set using equations. The basic classes include – Point (Point), Vector (Vector),
+coordinate system relative to the screen (CoordinateSystem), camera (Camera),
+object (Object).
+Each class represents a specific set of properties and
+methods:
+Point
+Point – a point in three-dimensional space:
+• x, y, z – coordinates in three-dimensional space;
+• distance(Point) – a method for finding the distance between two points;
+• Overload of operators of addition/subtraction of points, multiplication/division
+of a point by a number (scaling).
+Vector
+Vector is a descendant of the Point class, additionally includes:
+• length() – a method for determining the length of a vector;
+• scalarProduct(Vector) – a method that defines a scalar product;
+• vectorProduct(Vector) – a method that defines a vector product;
+2
+• Overloading of individual operators for the above methods
+(len, multiplication for the scalar product of vectors, and the power expression (∧, **) for the vector product).
+CoordinateSystem
+CoordinateSystem is a coordinate system in three–dimensional space. It will be used to determine the units of measurement in the canvas context (for display on the screen):
+• unitLength – the length of the unit vector on the screen.
+Camera
+Camera – a camera object capable of receiving information about the surrounding world:
+• position – an object of the Point class – a location in three-dimensional
+space;
+• lookAt – object of the Vector class – camera viewing direction;
+• FOV – camera viewing angle (in radians);
+• drawDistance – the distance of ray rendering.
+Object
+Object is an abstract empty parent class for describing objects
+in three–dimensional space:
+• position – an object of the Point class – a location in space;
+• rotation – information about the rotation of the object;
+• contains(Point) – a method that checks the content of a point on the surface of an object.
+
+
+
+Laboratory work No. 2
+The second laboratory work consists in the implementation of abstract
+objects with parameters, and their interaction between points in space.
+3
+Objects of implementation
+1. Implement the Parameters class to define object parameters. As properties – coefficients of the equation, as
+methods – methods of converting coefficients by rotation,
+displacement and/or scaling;
+2. For an object, implement a stub method for determining the nearest point from the set;
+3. For the object, implement the intersect(Point, Vector) stub method
+to search for the intersection point of a straight line set through a point and
+direction;
+4. For the object, enter the parameters property to pass the
+object parameters to it (for composing equations);
+5. For the camera, implement a method for determining the minimum distance to the object through the intersect method of the object,
+depending also on the drawDistance property;
+6. For the camera, determine the property of the number of partitions of the screen into
+blocks, in order to then calculate the angle of dispersion from them
+rays;
+7. Based on the object class, implement the Plane class,
+with inheritance of all properties, and overloading of the contains and
+intersect method depending on the plane equation;
+8. For the plane, set the successor of the Parameters – ParametersPlane class,
+which contains the coefficients A, B, C, D of the plane equation
+as properties, and is able to transform them depending on
+the rotation, displacement and scaling operations.
