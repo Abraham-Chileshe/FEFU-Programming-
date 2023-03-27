@@ -10,7 +10,7 @@ float fC(float x){
 }
 
 int main(){
-    
+
     float L0 = M_PI * (3 * (2 + 3) - sqrt((3 * 2 + 3) * (2 + 3 * 3)));
     float a = -2, b = 2, h = 2, x, y1, y2, L;
 
@@ -25,12 +25,10 @@ int main(){
             x += h;
         }
         L *= 2;
-    } while (fabs((L0 - L) / L0) >= 0.0001);
+    } while (fabs((L0 - L) / L0) >= 0.001);
 
     cout << "Curve length: " << fixed << setprecision(3) << L << endl;
-    cout << "The length of the curve according to the formula: " << fixed << setprecision(3) << L0 << endl;
-    cout << "Sampling interval for 0.01%: " << fixed << setprecision(5) << h << endl;
-
+    
 
     return 0;
 
