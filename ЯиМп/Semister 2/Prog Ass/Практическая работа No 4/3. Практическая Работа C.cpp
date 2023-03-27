@@ -1,67 +1,36 @@
 #include <iostream>
 #include <math.h>
-#define line cout<<"\n-------------------------\n";
 
 using namespace std;
 typedef double (*fun)(double x);
 
-
-double fB(double x){
-    return x * x - 4 * cos(x);
+double f1C(double x){
+    if (fabs(x) > 2) return 0;
+    else return sqrt((1 - (x * x) / (2 * 2)) * 3 * 3);
 }
-
-
-double f1B(double x){
-    return 4 * cos(x);
+double f2C(double x){
+    if (fabs(x) > 2) return 0;
+    else return -sqrt((1 - (x * x) / (2 * 2)) * 3 * 3);
 }
-
-double f2B(double x){
-    return x * x;
-}
-
-
-void interval(double &l, double &r, fun f){
-
-    const double  eps = 0.00001;
-    short int n;
-    double delta, a, b, c;
-    n = 0;
-    a = -100;
-    while (a <= 100){
-        while ((f(a) * f(a + 0.1) > 0) && (a <= 100)) a = a + 0.1;
-        if (f(a) * f(a + 0.1) < 0){
-            b = a + 0.1;
-            delta = 2 * eps;
-            while (b - a > delta){
-                c = (a + b) / 2;
-                if (f(a) * f(c) <= 0)   b = c;
-                else a = c;
-            }
-            if (n == 0)  l = (a + b) / 2; else r = (a + b) / 2;
-        }
-        a = a + 0.1;
-        n = n + 1;
-    }
-}
-
 
 int main(){
 
-    double x, S, h, a, b;
+    double x, S,S0, h, a, b;
 
-    cout << "Trapezoid method";
-    std::line;
-    interval(a, b, fB);
-    S = 0; x = a; h = 0.01;
+    S0 = M_PI * 2 * 3;
 
-    while (x < b){
-        S = S + f1B(x) - f2B(x) + f1B(x + h) - f2B(x + h);
-        x = x + h;
+    a = -2; b = 2; h = 2;
+    do {
+        S = 0; x = a; h = h / 2;
+        while (x < b){
+            S = S + f1C(x) - f2C(x) + f1C(x + h) - f2C(x + h);
+            x = x + h;
+        }
+        S = h * S / 2;
     }
 
-    S = h * S / 2;
-    printf("Area: %0.3f", S);
-    std::line;
+    while (fabs(S0 - S) / S0 > 0.000001);
+    cout << "Area: " << S << endl;
 
 
     return 0;
