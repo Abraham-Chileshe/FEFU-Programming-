@@ -72,8 +72,21 @@ public:
 };
 
 class Object {
+protected:
+    Point position; // location in space
+    Vector rotation; // information about the object's rotation
 public:
+    Object(Point pos, Vector rot) : position(pos), rotation(rot) {}
+    virtual ~Object() {}
 
+    // method that checks whether a point is contained on the surface of the object
+    virtual bool contains(Point p) = 0;
+    
+    // getter method for position
+    Point getPosition() { return position; }
+    
+    // getter method for rotation
+    Vector getRotation() { return rotation; }
 };
 
 int main() {
